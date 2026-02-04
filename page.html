@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            background-color: #ffe6f0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #e60073;
+        }
+
+        .boutons {
+            display: flex;
+            gap: 20px; /* espace égal entre les boutons */
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 10px;
+            border: none;
+        }
+
+        #oui {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #non {
+            background-color: #ff4d4d;
+            color: white;
+            position: relative; /* IMPORTANT : reste aligné au départ */
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Veux-tu être ma valentine ? 💖</h1>
+
+<div class="boutons">
+    <button id="oui" onclick="reponseOui()">Oui</button>
+    <button id="non">Non</button>
+</div>
+
+<script>
+    const boutonNon = document.getElementById("non");
+
+    function bougerBouton() {
+        const largeur = window.innerWidth - 100;
+        const hauteur = window.innerHeight - 50;
+
+        const x = Math.random() * largeur - window.innerWidth / 2;
+        const y = Math.random() * hauteur - window.innerHeight / 2;
+
+        boutonNon.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    // PC (souris)
+    boutonNon.addEventListener("mouseover", bougerBouton);
+
+    // Mobile + PC (clic)
+    boutonNon.addEventListener("click", bougerBouton);
+
+    // Mobile tactile direct
+    boutonNon.addEventListener("touchstart", bougerBouton);
+
+    function reponseOui() {
+        document.body.innerHTML = "<h1>Yaaaay 💕 Je suis trop content 😍</h1>";
+    }
+</script>
+
+</body>
+</html>
